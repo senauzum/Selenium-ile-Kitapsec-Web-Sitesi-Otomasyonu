@@ -1,0 +1,45 @@
+from selenium import webdriver
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import chromedriver_autoinstaller
+from time import sleep
+chromedriver_autoinstaller.install()
+
+driver=webdriver.Chrome()
+video_url="https://www.kitapsec.com/"
+driver.get(video_url)
+driver.maximize_window()
+sleep(3)
+driver.find_element(By.XPATH,'/html/body/div[4]/div/div/table/tbody/tr/td[4]/ul/li/a').click()
+sleep(3)
+driver.find_element(By.XPATH,'//*[@id="menuKategoriDiv4"]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/a[6]').click()
+sleep(3)
+driver.execute_script("window.scrollBy(0,1300)")
+sleep(5)
+driver.find_element(By.XPATH,'//*[@id="yayinEvleriListesi"]/a[2]').click()
+sleep(2)
+driver.execute_script("window.scrollBy(0,1600)")
+sleep(2)
+driver.find_element(By.XPATH,'/html/body/div[5]/div[1]/div/div/div/div[2]/div/div/table/tbody/tr[2]/td/table[2]/tbody/tr[4]/td/div/table/tbody/tr/td[1]/select').click()
+sleep(2)
+min_price = Select(driver.find_element(By.NAME, "FiyatBaslangic"))
+min_price.select_by_value("50")
+sleep(1)
+driver.find_element(By.XPATH,'/html/body/div[5]/div[1]/div/div/div/div[2]/div/div/table/tbody/tr[2]/td/table[2]/tbody/tr[4]/td/div/table/tbody/tr/td[3]/select').click()
+sleep(2)
+max_price = Select(driver.find_element(By.NAME, "FiyatBitis"))
+max_price.select_by_value("100")
+sleep(1)
+driver.find_element(By.NAME,"B1").click()
+sleep(1)
+driver.execute_script("window.scrollBy(0,250)")
+driver.find_element(By.XPATH,'//*[@id="374610"]/a[1]/img').click()
+sleep(1)
+driver.execute_script("window.scrollBy(0,250)")
+sleep(1)
+driver.find_element(By.XPATH,'//*[@id="https://www.kitapsec.com/Products/Peter-Pan-JMBarrie-Is-Bankasi-Kultur-Yayinlari-374610.html"]/div[1]/div[2]/div[4]/div/div/a[2]').click()
+sleep(1)
+driver.find_element(By.XPATH,'//*[@id="https://www.kitapsec.com/Products/Peter-Pan-JMBarrie-Is-Bankasi-Kultur-Yayinlari-374610.html"]/div[1]/div[2]/div[4]/a[2]').click()
+sleep(2)
+driver.quit()
